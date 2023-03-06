@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import entities from './typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BoardsModule } from './boards/boards.module';
@@ -15,7 +16,7 @@ import { BoardsModule } from './boards/boards.module';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
-        entities: [],
+        entities: entities,
         synchronize: true,
       }),
       inject: [ConfigService],
