@@ -14,4 +14,16 @@ export class BoardsService {
         const newBoard = this.boardRepository.create(createBoardDto);
         return this.boardRepository.save(newBoard)
     }
+
+    getBoards() {
+        return this.boardRepository.find();
+      }
+
+    findBoardsById(id: number) {
+        return this.boardRepository.findOne({
+            where: {
+                id,
+            },
+        });
+    }
 }
