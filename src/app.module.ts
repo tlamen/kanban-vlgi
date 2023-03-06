@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import entities from './typeorm';
+import entities, { Board } from './typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BoardsModule } from './boards/boards.module';
@@ -21,6 +21,7 @@ import { BoardsModule } from './boards/boards.module';
       }),
       inject: [ConfigService],
     }),
+    TypeOrmModule.forFeature([Board]),
     BoardsModule,
   ],
   controllers: [],

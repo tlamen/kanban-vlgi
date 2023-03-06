@@ -15,9 +15,8 @@ export class Board {
   title: string;
 
   @Column({
-    name: 'email_address',
     nullable: false,
-    default: '',
+    default: '#ffffff',
   })
   background: string;
 
