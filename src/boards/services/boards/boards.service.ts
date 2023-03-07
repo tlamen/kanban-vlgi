@@ -17,7 +17,7 @@ export class BoardsService {
 
     getBoards() {
         return this.boardRepository.find();
-      }
+    }
 
     findBoardsById(id: number) {
         return this.boardRepository.findOne({

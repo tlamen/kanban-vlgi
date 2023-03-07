@@ -11,6 +11,11 @@ export class BoardsController {
         return this.boardService.findBoardsById(id);
     }
 
+    @Get('index')
+    findBoards() {
+        return this.boardService.getBoards();
+    }
+
     @Post('create')
     @UsePipes(ValidationPipe)
     createBoard(@Body() CreateBoardDto: CreateBoardDto) {
