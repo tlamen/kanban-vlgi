@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Board {
+export class User {
   @PrimaryGeneratedColumn({
     type: 'bigint',
     name: 'board_id',
@@ -12,12 +12,24 @@ export class Board {
     nullable: false,
     default: '',
   })
-  title: string;
+  name: string;
 
   @Column({
     nullable: false,
-    default: '#ffffff',
+    default: '',
   })
-  background: string;
+  email: string;
+
+  @Column({
+    nullable: false,
+    default: '',
+  })
+  password: string;
+
+  @Column({
+    nullable: false,
+    default: '',
+  })
+  image: string;
 
 }
