@@ -1,5 +1,8 @@
 import { HttpStatus, ValidationPipe } from "@nestjs/common";
 import {registerDecorator, ValidationArguments, ValidationOptions, ValidatorConstraint, ValidatorConstraintInterface} from 'class-validator';
+import { User } from "./typeorm";
+import * as bcrypt from 'bcrypt';
+
 
 const VALIDATION_PIPE = new ValidationPipe({
     errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
@@ -36,4 +39,9 @@ export class MatchConstraint implements ValidatorConstraintInterface {
         return `${relatedPropertyName} and ${args.property} don't match`;
      }
 
+}
+
+export async function bcryptPassword(user: User): Promise<string> {
+    const salt = await bcrypt.genSalt();
+    return await bcrypt.hash(user.password || this.password, salt);
 }
