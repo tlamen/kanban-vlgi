@@ -23,6 +23,7 @@ export class UsersService {
     }
 
     async doUserRegistration(userRegister: userRegisterRequestDto): Promise<User> {
+        
         const user = new User();
         user.name = userRegister.name;
         user.email = userRegister.email;
