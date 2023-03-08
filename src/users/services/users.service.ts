@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { bcryptPassword } from 'src/app.utils';
 import { User } from 'src/typeorm';
@@ -38,11 +38,9 @@ export class UsersService {
         const user = await this.findOne(email);
         const isPasswordMatching = await bcrypt.compare(pass, user.password);
         if (user && isPasswordMatching) {
-            console.log("Faz login");
           const { password, ...result } = user;
           return result;
         }
-        console.log("Falhou");
-        return null;
+        throw new HttpException('Wrong credentials provided', HttpStatus.BAD_REQUEST);
     }
 }
