@@ -3,7 +3,6 @@ import entities, { Board } from './typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BoardsModule } from './boards/boards.module';
-import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 
 @Module({
@@ -25,7 +24,6 @@ import { UsersModule } from './users/users.module';
     }),
     TypeOrmModule.forFeature([Board]),
     BoardsModule,
-    AuthModule,
     UsersModule,
   ],
   controllers: [],
