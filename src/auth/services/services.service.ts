@@ -7,13 +7,16 @@ import * as bcrypt from 'bcrypt';
 export class AuthService {
     constructor(private userService: UsersService) {}
 
-    async validateUserCreds(email: string, password: string): Promise<User | undefined> {
+    async validateUser(email: string, password: string): Promise<any> {
         const user = await this.userService.findOne(email);
 
-        if(!user) throw new BadRequestException();
+        if(!user) { throw new BadRequestException(); }
 
-        if (!bcrypt.compare(password, user.password))
+        if (! (await bcrypt.compare(password, user.password) )) {
+            console.log("service");
             throw new UnauthorizedException(); 
+        }
+            
         
         return user;
     }
