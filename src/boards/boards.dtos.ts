@@ -1,4 +1,4 @@
-import { IsNotEmpty, MinLength } from "class-validator";
+import { IsNotEmpty, Length, MinLength } from "class-validator";
 
 export class CreateBoardDto {
   @IsNotEmpty()
@@ -7,4 +7,7 @@ export class CreateBoardDto {
 
   @IsNotEmpty()
   background: string;
+
+  @IsNotEmpty()
+  user_id: number;
 }

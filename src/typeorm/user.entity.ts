@@ -1,5 +1,6 @@
-import { BaseEntity, BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, BeforeInsert, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { Board } from './board.entity';
 
 @Entity({name: "users"})
 export class User extends BaseEntity {
@@ -34,6 +35,9 @@ export class User extends BaseEntity {
     default: '',
   })
   image: string;
+
+  @OneToMany(() => Board, (board) => board.user)
+  boards: Board[];
 
   @BeforeInsert()
   async setPassword(password: string) {
