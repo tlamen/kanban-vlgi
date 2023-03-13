@@ -34,13 +34,13 @@ export class UsersService {
         return await user.save();
     }
 
-    async validateUser(email: string, pass: string): Promise<any> {
-        const user = await this.findOne(email);
-        const isPasswordMatching = await bcrypt.compare(pass, user.password);
-        if (user && isPasswordMatching) {
-          const { password, ...result } = user;
-          return result;
-        }
-        throw new HttpException('Wrong credentials provided', HttpStatus.BAD_REQUEST);
-    }
+    // async validateUser(email: string, pass: string): Promise<any> {
+    //     const user = await this.findOne(email);
+    //     const isPasswordMatching = await bcrypt.compare(pass, user.password);
+    //     if (user && isPasswordMatching) {
+    //       const { password, ...result } = user;
+    //       return result;
+    //     }
+    //     throw new HttpException('Wrong credentials provided', HttpStatus.BAD_REQUEST);
+    // }
 }
